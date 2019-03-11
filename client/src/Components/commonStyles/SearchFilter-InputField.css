@@ -1,0 +1,7 @@
+#fb-gg-search {
+    overflow: hidden;
+    max-width: 200px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    opacity: 1 !important;
+}
