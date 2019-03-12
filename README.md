@@ -20,7 +20,7 @@ This will start both the client (port 3000) and server (port 5000) and launch th
 
 Launches the test runner in the interactive watch mode.<br>
 
-## Could NOT deploy to Heroku - details below for my personal record for future reference
+### Could NOT deploy to free tier Heroku dyno (because of too much packages/functionality for my free tier a single dyno) - details below for my personal record for future reference
 
 #### All Trials for Heroku deployment I made are in the other duplicate directory (material-ui-table-with-node-mongodb-duplicate-FOR-FAILED-HEROKU-TRIALS), where everything is exact same, only the directory structure is DIFFERENT. Meaning, there, I dont have a separate `server` directory to hold all the server code. Ther `server` files and folder are in the project root itself. ( Have kept the file-tree structure just the same, as Heroku requires a package.json at the root of the project, and so I kept the file structure in that fashion and to exactly replicate my other repo Dev-Book which was successfully deployed in Heroku and which is also a MERN stack app)
 
@@ -39,7 +39,7 @@ Main failure reason and Errors I got in the Terminal -
 
 1> https://stackoverflow.com/questions/43903320/error-in-heroku-when-deploying-react-node-app
 
-You are getting "Error R14 (Memory quota exceeded)". [Check R14 - Memory Quota Exceeded](https://devcenter.heroku.com/articles/error-codes#r14-memory-quota-exceeded) to see some possible tips. Perhaps you have packed in too much functionality into a single dyno? What does your Procfile look like, and what dyno types are you using?
+You are getting "Error R14 (Memory quota exceeded)". [Check R14 - Memory Quota Exceeded](https://devcenter.heroku.com/articles/error-codes#r14-memory-quota-exceeded) to see some possible tips. Perhaps you have packed in too much functionality into a single dyno?
 
 2> It also could be that Heroku does not support mongocluster (which is where I have hosted my database) - As Heroku specifically gives an addon for mLab, but does not give anything for mongocluster.
 

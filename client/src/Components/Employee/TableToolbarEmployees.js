@@ -162,11 +162,6 @@ class TableToolbarEmployee extends Component {
       "MMMM"
     );
 
-    // const momentDateNumber = moment().date();
-    // const currentDate = moment(moment().date(momentDateNumber)).format(
-    //   "MMMM Do YYYY"
-    // );
-
     return (
       <Toolbar
         className={classNames(classes.root, {

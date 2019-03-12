@@ -330,11 +330,12 @@ class EmployeeList extends Component {
   // Function to return true if an item is selected or false if NOT
   isSelected = id => this.state.selected.indexOf(id) !== -1;
 
-  // ToDo (include logic for only currentMonth data) When the checkbox for selecting all in current page is clicked
+  // Function to handle when the checkbox for the select all is clicked to select all the items in that page
   handleSelectAllClick = event => {
     if (event.target.checked) {
       if (
         this.state.ifUserSearchedDateRange === false &&
+        this.state.ifUserClickedForCurrentMonth === false &&
         this.state.queryStringFromChild === ""
       ) {
         this.setState(state => ({
@@ -360,6 +361,11 @@ class EmployeeList extends Component {
         );
         this.setState(state => ({
           selected: itemsToRenderInThisPage.map(n => n._id)
+        }));
+        return;
+      } else if (this.state.ifUserClickedForCurrentMonth === true) {
+        this.setState(state => ({
+          selected: state.currentMonthPaginated.map(n => n._id)
         }));
         return;
       } else {
@@ -835,6 +841,7 @@ class EmployeeList extends Component {
           </Helmet>
           <Row>
             <Col xs="12">
+              {console.log("SELECTED IS ", selected)}
               <Paper className={classes.root}>
                 <TableToolbarEmployee
                   totalItemsFormatted={this.state.totalItemsFormatted}
@@ -936,7 +943,7 @@ class EmployeeList extends Component {
                                 className={classes.customTableCell}
                                 align="center"
                                 style={{
-                                  width: "15%"
+                                  width: "30%"
                                 }}
                               >
                                 {n.work_description}
@@ -954,7 +961,7 @@ class EmployeeList extends Component {
                                 className={classes.customTableCell}
                                 align="center"
                                 style={{
-                                  width: "20%"
+                                  width: "15%"
                                 }}
                               >
                                 {n.benchmark_employee_productivity}
@@ -963,7 +970,7 @@ class EmployeeList extends Component {
                                 className={classes.customTableCell}
                                 align="center"
                                 style={{
-                                  width: "35%"
+                                  width: "15%"
                                 }}
                               >
                                 {moment(n.date).format("MMM D, YYYY 12:00:00 ")}{" "}
