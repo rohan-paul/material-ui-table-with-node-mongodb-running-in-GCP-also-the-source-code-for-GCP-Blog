@@ -13,6 +13,8 @@ let employeeSchema = new Schema(
       ref: "Department",
       autopopulate: true
     },
+    employee_name: { type: String },
+    work_description: { type: String },
     avg_employee_productivity: { type: Number }, // in Tonnes
     benchmark_employee_productivity: { type: Number }, // in Tonnes
     date: { type: Date }

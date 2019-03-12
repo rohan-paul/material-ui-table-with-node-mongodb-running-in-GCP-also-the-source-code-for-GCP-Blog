@@ -26,16 +26,6 @@ import { MenuItem } from "material-ui/Menu";
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 
-// variable to style the MenuItems in the Department Select Field (with MenuProps={MenuItemProps} - but was getting warning 'React does not recognize MenuProps" - hence deleted that part from Select TextField
-// const MenuItemProps = {
-//   PaperProps: {
-//     style: {
-//       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-//       width: 550
-//     }
-//   }
-// };
-
 function getStyles(name, that) {
   return {
     fontWeight:
@@ -54,6 +44,8 @@ class AddNewEmployee extends Component {
     vertical: "top",
     horizontal: "center",
     department_objectId: "",
+    employee_name: "",
+    work_description: "",
     avg_employee_productivity: "",
     benchmark_employee_productivity: "",
     department_name: "",
@@ -88,12 +80,16 @@ class AddNewEmployee extends Component {
     const { addNewItemToParentState } = this.props;
     const {
       department_objectId,
+      employee_name,
+      work_description,
       avg_employee_productivity,
       benchmark_employee_productivity,
       date
     } = this.state;
     if (
       department_objectId !== "" &&
+      employee_name !== "" &&
+      work_description !== "" &&
       avg_employee_productivity !== "" &&
       benchmark_employee_productivity !== "" &&
       date !== ""
@@ -108,6 +104,8 @@ class AddNewEmployee extends Component {
         .then(() => {
           addNewItemToParentState({
             department_objectId,
+            employee_name,
+            work_description,
             avg_employee_productivity,
             benchmark_employee_productivity,
             date
@@ -154,6 +152,8 @@ class AddNewEmployee extends Component {
     const { classes, allDepartmentsForSiblingCommunication } = this.props;
     const {
       department_objectId,
+      employee_name,
+      work_description,
       avg_employee_productivity,
       benchmark_employee_productivity,
       department_name,
@@ -239,6 +239,59 @@ class AddNewEmployee extends Component {
                     ))}
                   </TextField>
                 </FormControl>
+                <TextField
+                  required
+                  autoFocus
+                  classes={{
+                    root: classes.space
+                  }}
+                  value={employee_name}
+                  onChange={e =>
+                    this.setState({
+                      employee_name: e.target.value
+                    })
+                  }
+                  error={employee_name === ""}
+                  helperText={
+                    employee_name === "" ? "Please enter Employee Name" : " "
+                  }
+                  label="Employee Name"
+                  type="string"
+                  fullWidth
+                  InputProps={{
+                    classes: {
+                      underline: classes.underline
+                    }
+                  }}
+                />
+                <TextField
+                  required
+                  autoFocus
+                  multiline
+                  classes={{
+                    root: classes.space
+                  }}
+                  value={work_description}
+                  onChange={e =>
+                    this.setState({
+                      work_description: e.target.value
+                    })
+                  }
+                  error={work_description === ""}
+                  helperText={
+                    work_description === ""
+                      ? "Please enter Work Description"
+                      : " "
+                  }
+                  label="Description of Work"
+                  type="string"
+                  fullWidth
+                  InputProps={{
+                    classes: {
+                      underline: classes.underline
+                    }
+                  }}
+                />
 
                 <TextField
                   id="standard-number"

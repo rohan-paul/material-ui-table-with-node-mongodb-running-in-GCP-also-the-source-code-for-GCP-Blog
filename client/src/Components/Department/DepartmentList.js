@@ -65,7 +65,7 @@ function stableSort(array, comparisonCB) {
   return stabilizedThis.map(el => el[0]);
 }
 
-/* getSorting() to be passed as a callback to the above sableSort(). The argument 'orderBy' will initially start (as a state) its value with 'location' (which is the first table header label) and then will take on whichever table header label the user clicks on.
+/* getSorting() to be passed as a callback to the above sableSort(). The argument 'orderBy' will initially start (as a state) its value with 'employee_name' (which is the first table header label) and then will take on whichever table header label the user clicks on.
 A> First the 'orderBy' value will be set by handleRequestSort() with its argument 'property'
 B> Then this function will be passed down as a prop 'onRequestSort' to EnhancedTableHead child component.
 C> In EnhancedTableHead, it will be called within createSortHandler() function and will be invoked on onClick and passed row.tableHeaderProp (which is the Table-header field value)
@@ -122,7 +122,7 @@ class DepartmentList extends Component {
   };
 
   editItem = () => {
-    // * having to put this extra if condition and the database call here to resolve an issue that for the last item left in the table, after edit submission the location and work-description was not getting rendered immediately. Edited data will get rendered only after page refresh
+    // * having to put this extra if condition and the database call here to resolve an issue that for the last item left in the table, after edit submission the employee_name and work-description was not getting rendered immediately. Edited data will get rendered only after page refresh
     if (this.state.allCommodities.length === 1) {
       axios
         .get("/api/department")

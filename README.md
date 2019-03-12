@@ -10,15 +10,19 @@ run `npm install` in both the `./server` and `./client` directories separately, 
 
 Then, start mongodb service with `sudo service mongod start` and then finally run the following command from inside the `server` directory.
 
-- `npm run dev`
+`npm run dev`
 
-This will start both the client (port 3000) and server (port 5000) and launch the site in port 3000. Then navigate to one of the below.
+This will start both the client (port 3000) and server (port 5000) and launch the site in port 3000.
+
+### Other Commands
 
 #### `npm test`
 
 Launches the test runner in the interactive watch mode.<br>
 
-## Could NOT deploy to Heroku - details below and All Trials were made in the other duplicate directory (material-ui-table-with-node-mongodb-duplicate-FOR-FAILED-HEROKU-TRIALS), where everything is exact same, only the directory structure is DIFFERENT. Meaning, there, I dont have a separate `server` directory to hold all the server code. ( Have kept the file-tree structure just the same, as my Dev-Book code, which is also a MERN stack app, and successfully deployed in Heroku )
+## Could NOT deploy to Heroku - details below for my personal record for future reference
+
+#### All Trials for Heroku deployment I made are in the other duplicate directory (material-ui-table-with-node-mongodb-duplicate-FOR-FAILED-HEROKU-TRIALS), where everything is exact same, only the directory structure is DIFFERENT. Meaning, there, I dont have a separate `server` directory to hold all the server code. Ther `server` files and folder are in the project root itself. ( Have kept the file-tree structure just the same, as Heroku requires a package.json at the root of the project, and so I kept the file structure in that fashion and to exactly replicate my other repo Dev-Book which was successfully deployed in Heroku and which is also a MERN stack app)
 
 Main failure reason and Errors I got in the Terminal -
 
@@ -67,9 +71,9 @@ You are getting "Error R14 (Memory quota exceeded)". [Check R14 - Memory Quota E
         "fix-code": "prettier-eslint --write 'src/**/*.{js,jsx}' ",
         "fix-styles": "prettier-stylelint --write 'src/**/*.{css,scss}' "
     },
-````
+```
 
-#### Script Configuration - 2 that did not work (and this is exact same what I had in my DevBook Repo)
+#### Script Configuration - 2 that did not work (and this is exact same what I had in my other repo named DevBook )
 
 ```js
 "scripts": {
@@ -84,3 +88,4 @@ You are getting "Error R14 (Memory quota exceeded)". [Check R14 - Memory Quota E
     },
 
 ```
+````
