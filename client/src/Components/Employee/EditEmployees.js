@@ -52,6 +52,8 @@ class EditEmployee extends Component {
     vertical: "top",
     horizontal: "center",
     department_objectId: this.props.itemToEdit[0].department_objectId,
+    employee_name: this.props.itemToEdit[0].employee_name,
+    work_description: this.props.itemToEdit[0].work_description,
     avg_employee_productivity: this.props.itemToEdit[0]
       .avg_employee_productivity,
     benchmark_employee_productivity: this.props.itemToEdit[0]
@@ -90,12 +92,16 @@ class EditEmployee extends Component {
 
     const {
       department_objectId,
+      employee_name,
+      work_description,
       avg_employee_productivity,
       benchmark_employee_productivity,
       date
     } = this.state;
     if (
       department_objectId !== "" &&
+      employee_name !== "" &&
+      work_description !== "" &&
       avg_employee_productivity !== "" &&
       benchmark_employee_productivity !== "" &&
       date !== ""
@@ -103,6 +109,8 @@ class EditEmployee extends Component {
       axios
         .put(`/api/employee/${this.props.itemToEdit[0]._id}`, {
           department_objectId,
+          employee_name,
+          work_description,
           avg_employee_productivity,
           benchmark_employee_productivity,
           date
@@ -158,6 +166,8 @@ class EditEmployee extends Component {
     const { classes, allDepartmentsForSiblingCommunication } = this.props;
     const {
       department_objectId,
+      employee_name,
+      work_description,
       avg_employee_productivity,
       benchmark_employee_productivity,
       department_name,
@@ -233,6 +243,60 @@ class EditEmployee extends Component {
                     ))}
                   </TextField>
                 </FormControl>
+
+                <TextField
+                  required
+                  autoFocus
+                  classes={{
+                    root: classes.space
+                  }}
+                  value={employee_name}
+                  onChange={e =>
+                    this.setState({
+                      employee_name: e.target.value
+                    })
+                  }
+                  error={employee_name === ""}
+                  helperText={
+                    employee_name === "" ? "Please enter Employee Name" : " "
+                  }
+                  label="Employee Name"
+                  type="string"
+                  fullWidth
+                  InputProps={{
+                    classes: {
+                      underline: classes.underline
+                    }
+                  }}
+                />
+                <TextField
+                  required
+                  autoFocus
+                  multiline
+                  classes={{
+                    root: classes.space
+                  }}
+                  value={work_description}
+                  onChange={e =>
+                    this.setState({
+                      work_description: e.target.value
+                    })
+                  }
+                  error={work_description === ""}
+                  helperText={
+                    work_description === ""
+                      ? "Please enter Work Description"
+                      : " "
+                  }
+                  label="Description of Work"
+                  type="string"
+                  fullWidth
+                  InputProps={{
+                    classes: {
+                      underline: classes.underline
+                    }
+                  }}
+                />
 
                 <TextField
                   id="standard-number"
@@ -362,6 +426,8 @@ class EditEmployee extends Component {
                   size="large"
                   disabled={
                     department_objectId === "" ||
+                    employee_name === "" ||
+                    work_description === "" ||
                     avg_employee_productivity === "" ||
                     benchmark_employee_productivity === "" ||
                     department_name === "" ||

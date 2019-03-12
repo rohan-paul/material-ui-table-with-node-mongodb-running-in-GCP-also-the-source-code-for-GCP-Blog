@@ -426,6 +426,8 @@ class AddNewEmployee extends Component {
                   type="submit"
                   disabled={
                     department_objectId === "" ||
+                    employee_name === "" ||
+                    work_description === "" ||
                     avg_employee_productivity === "" ||
                     benchmark_employee_productivity === "" ||
                     department_name === "" ||
