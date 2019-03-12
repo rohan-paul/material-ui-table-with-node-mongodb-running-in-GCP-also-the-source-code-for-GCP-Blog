@@ -918,10 +918,28 @@ class EmployeeList extends Component {
                                 className={classes.customTableCell}
                                 align="center"
                                 style={{
-                                  width: "25%"
+                                  width: "15%"
                                 }}
                               >
                                 {n.department_name}
+                              </CustomTableCell>
+                              <CustomTableCell
+                                className={classes.customTableCell}
+                                align="center"
+                                style={{
+                                  width: "15%"
+                                }}
+                              >
+                                {n.employee_name}
+                              </CustomTableCell>
+                              <CustomTableCell
+                                className={classes.customTableCell}
+                                align="center"
+                                style={{
+                                  width: "15%"
+                                }}
+                              >
+                                {n.work_description}
                               </CustomTableCell>
                               <CustomTableCell
                                 className={classes.customTableCell}

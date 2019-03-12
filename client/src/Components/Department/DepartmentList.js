@@ -80,7 +80,7 @@ class DepartmentList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      allCommodities: [],
+      allDepartments: [],
       openEditModal: false,
       editingOnItemDone: false,
       order: "desc",
@@ -111,11 +111,11 @@ class DepartmentList extends Component {
   addItem = item => {
     this.setState(
       {
-        allCommodities: [item, ...this.state.allCommodities]
+        allDepartments: [item, ...this.state.allDepartments]
       },
       () => {
         this.props.setDepartmentForSiblingCommunication(
-          this.state.allCommodities
+          this.state.allDepartments
         );
       }
     );
@@ -123,12 +123,12 @@ class DepartmentList extends Component {
 
   editItem = () => {
     // * having to put this extra if condition and the database call here to resolve an issue that for the last item left in the table, after edit submission the employee_name and work-description was not getting rendered immediately. Edited data will get rendered only after page refresh
-    if (this.state.allCommodities.length === 1) {
+    if (this.state.allDepartments.length === 1) {
       axios
         .get("/api/department")
         .then(res => {
           this.setState({
-            allCommodities: res.data
+            allDepartments: res.data
           });
         })
         .catch(error => {
@@ -137,11 +137,11 @@ class DepartmentList extends Component {
     } else {
       this.setState(
         {
-          allCommodities: [this.state.allCommodities]
+          allDepartments: [this.state.allDepartments]
         },
         () => {
           this.props.setDepartmentForSiblingCommunication(
-            this.state.allCommodities
+            this.state.allDepartments
           );
         }
       );
@@ -150,7 +150,7 @@ class DepartmentList extends Component {
 
   returnDocumentToEdit = id => {
     if (this.state.selected.length !== 0) {
-      return this.state.allCommodities.filter(item => item._id === id);
+      return this.state.allDepartments.filter(item => item._id === id);
     }
   };
 
@@ -174,12 +174,12 @@ class DepartmentList extends Component {
                   .then(() => {
                     this.setState(
                       {
-                        allCommodities: [this.state.allCommodities],
+                        allDepartments: [this.state.allDepartments],
                         selected: []
                       },
                       () => {
                         this.props.setDepartmentForSiblingCommunication(
-                          this.state.allCommodities
+                          this.state.allDepartments
                         );
                       }
                     );
@@ -229,7 +229,7 @@ class DepartmentList extends Component {
       page,
       rowsPerPage,
       queryStringFromChild,
-      allCommodities,
+      allDepartments,
       order,
       orderBy
     } = this.state;
@@ -237,7 +237,7 @@ class DepartmentList extends Component {
     if (event.target.checked) {
       if (queryStringFromChild === "") {
         const listOfItemsInCurrentPage = stableSort(
-          allCommodities,
+          allDepartments,
           getSorting(order, orderBy)
         ).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
         console.log("LIST OF CURRENT PAGE ITEMS ", listOfItemsInCurrentPage);
@@ -248,7 +248,7 @@ class DepartmentList extends Component {
       } else if (this.state.queryStringFromChild !== "") {
         const lowerCaseQuery = this.state.queryStringFromChild.toLowerCase();
 
-        const totalTextQueryResult = this.state.allCommodities.filter(item => {
+        const totalTextQueryResult = this.state.allDepartments.filter(item => {
           return (
             item[this.state.columnToQuery] &&
             item[this.state.columnToQuery]
@@ -300,7 +300,7 @@ class DepartmentList extends Component {
       .get("/api/department")
       .then(res => {
         this.setState({
-          allCommodities: res.data
+          allDepartments: res.data
         });
       })
       .catch(error => {
@@ -312,14 +312,14 @@ class DepartmentList extends Component {
     if (
       this.state.rowsPerPage !== prevState.rowsPerPage ||
       this.state.page !== prevState.page ||
-      this.state.allCommodities.length !== prevState.allCommodities.length ||
+      this.state.allDepartments.length !== prevState.allDepartments.length ||
       this.state.selected !== prevState.selected
     ) {
       return axios
         .get("/api/department")
         .then(res => {
           this.setState({
-            allCommodities: res.data
+            allDepartments: res.data
           });
         })
         .catch(error => {
@@ -363,7 +363,7 @@ class DepartmentList extends Component {
       selected,
       rowsPerPage,
       page,
-      allCommodities,
+      allDepartments,
       queryStringFromChild
     } = this.state;
 
@@ -371,7 +371,7 @@ class DepartmentList extends Component {
     const lowerCaseQuery =
       queryStringFromChild && queryStringFromChild.toLowerCase();
 
-    const totalTextQueryResult = allCommodities.filter(
+    const totalTextQueryResult = allDepartments.filter(
       item =>
         item[this.state.columnToQuery] &&
         item[this.state.columnToQuery].toLowerCase().includes(lowerCaseQuery)
@@ -380,7 +380,7 @@ class DepartmentList extends Component {
     const departmentListToRender = orderByLodash(
       queryStringFromChild
         ? totalTextQueryResult
-        : stableSort(allCommodities, getSorting(order, orderBy)).slice(
+        : stableSort(allDepartments, getSorting(order, orderBy)).slice(
             page * rowsPerPage,
             page * rowsPerPage + rowsPerPage
           )
@@ -389,7 +389,7 @@ class DepartmentList extends Component {
     const departmentToEdit = this.returnDocumentToEdit(this.state.selected[0]);
 
     // filter the whole database returning only the selected items
-    const downloadSelectedItems = allCommodities.filter(item => {
+    const downloadSelectedItems = allDepartments.filter(item => {
       return selected.indexOf(item._id) !== -1;
     });
 
@@ -404,13 +404,13 @@ class DepartmentList extends Component {
           <Helmet>
             <meta charSet="utf-8" />
             <title>MyCompany Department List</title>
-            <meta name="description" content="MyCompany List of Commodities!" />
+            <meta name="description" content="MyCompany List of Departments!" />
           </Helmet>
           <Row>
             <Col xs="12">
               <Paper className={classes.root}>
                 <TableToolbarDepartment
-                  allCommodities={this.state.allCommodities}
+                  allDepartments={this.state.allDepartments}
                   numSelected={selected.length}
                   confirmDeleteCustom={this.confirmDeleteCustom}
                   checkedItems={selected}
@@ -437,7 +437,7 @@ class DepartmentList extends Component {
                       count={
                         queryStringFromChild
                           ? totalTextQueryResult.length
-                          : allCommodities.length
+                          : allDepartments.length
                       }
                       rowsPerPage={parseInt(rowsPerPage)}
                       noOfItemsInCurrentPage={departmentListToRender.length}
@@ -455,7 +455,7 @@ class DepartmentList extends Component {
                             key={n._id || n.id || i}
                             selected={isSelected}
                             style={{
-                              height: "35px"
+                              height: "15px"
                             }}
                           >
                             <CustomTableCell
@@ -477,6 +477,30 @@ class DepartmentList extends Component {
                               }}
                             >
                               {n.name}
+                            </CustomTableCell>
+                            <CustomTableCell
+                              align="center"
+                              style={{
+                                whiteSpace: "nowrap",
+                                maxWidth: 0,
+                                overflow: "hidden",
+                                textOverflow: "ellipsis",
+                                width: "18%"
+                              }}
+                            >
+                              {n.employee_name}
+                            </CustomTableCell>
+                            <CustomTableCell
+                              align="center"
+                              style={{
+                                whiteSpace: "nowrap",
+                                maxWidth: 0,
+                                overflow: "hidden",
+                                textOverflow: "ellipsis",
+                                width: "18%"
+                              }}
+                            >
+                              {n.work_description}
                             </CustomTableCell>
                             <CustomTableCell
                               align="center"
@@ -507,7 +531,7 @@ class DepartmentList extends Component {
                           count={
                             queryStringFromChild
                               ? totalTextQueryResult.length
-                              : allCommodities.length
+                              : allDepartments.length
                           }
                           rowsPerPage={parseInt(rowsPerPage)}
                           page={page}

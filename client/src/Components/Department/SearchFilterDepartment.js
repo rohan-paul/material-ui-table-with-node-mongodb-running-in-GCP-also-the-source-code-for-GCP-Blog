@@ -145,12 +145,12 @@ class SearchFilter extends React.Component {
     const suggestions = (() => {
       switch (columnToQuery) {
         case "name":
-          return this.props.allCommodities.map(item => ({
+          return this.props.allDepartments.map(item => ({
             value: item.name,
             label: item.name
           }));
         case "type":
-          return this.props.allCommodities.map(item => ({
+          return this.props.allDepartments.map(item => ({
             value: item.type,
             label: item.type
           }));

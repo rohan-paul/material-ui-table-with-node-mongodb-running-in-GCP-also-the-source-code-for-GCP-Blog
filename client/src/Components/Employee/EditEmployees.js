@@ -166,7 +166,6 @@ class EditEmployee extends Component {
 
     return (
       <MuiThemeProvider theme={theme}>
-        {/* {console.log("ALL COMMODITIES ", allDepartmentsForSiblingCommunication)} */}
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <div>
             <IconButton onClick={this.handleFabOpen} aria-label="Edit">
@@ -257,7 +256,7 @@ class EditEmployee extends Component {
                       ? "Please enter Berth Hire"
                       : " "
                   }
-                  label="Avg. Ship Bearth Throughput(In Tonnes)"
+                  label="Avg. Bearth Throughput"
                   type="number"
                   fullWidth
                   InputProps={{
@@ -288,7 +287,7 @@ class EditEmployee extends Component {
                       ? "Please enter Other Services"
                       : " "
                   }
-                  label="Standard Ship Bearth Throughput(In Tonnes)"
+                  label="Standard Bearth Throughput"
                   type="number"
                   fullWidth
                   InputProps={{
@@ -326,7 +325,7 @@ class EditEmployee extends Component {
                             ]
                           : []
                       }
-                      label="Date of Employees"
+                      label="Date of Employment"
                       value={date}
                       onChange={this.handleCommencementDateChange}
                       disableOpenOnEnter

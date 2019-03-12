@@ -18,6 +18,16 @@ const rows = [
     label: "Department"
   },
   {
+    tableHeaderProp: "employee_name",
+    disablePadding: true,
+    label: "Employee Name"
+  },
+  {
+    tableHeaderProp: "work_description",
+    disablePadding: true,
+    label: "Work Description"
+  },
+  {
     tableHeaderProp: "avg_employee_productivity",
     disablePadding: false,
     label: "Avg. Employee Productivity"

@@ -8,6 +8,8 @@ module.exports = {
   createAllocationEmployee: item => ({
     _id: item._id,
     department_objectId: item.department_objectId._id,
+    employee_name: item.employee_name,
+    work_description: item.work_description,
     avg_employee_productivity: item.avg_employee_productivity,
     benchmark_employee_productivity: item.benchmark_employee_productivity,
     date: item.date,

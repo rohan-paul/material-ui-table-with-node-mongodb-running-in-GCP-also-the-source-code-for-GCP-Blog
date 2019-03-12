@@ -108,7 +108,7 @@ class ShowEmployee extends Component {
                     root: classes.space
                   }}
                   value={avg_employee_productivity}
-                  label="Avg. Ship Bearth Throughput(In Tonnes)"
+                  label="Avg. Bearth Throughput"
                   type="number"
                   fullWidth
                   InputProps={{
@@ -125,7 +125,7 @@ class ShowEmployee extends Component {
                     root: classes.space
                   }}
                   value={benchmark_employee_productivity}
-                  label="Standard Ship Bearth Throughput(In Tonnes)"
+                  label="Standard Bearth Throughput"
                   type="number"
                   fullWidth
                   InputProps={{
@@ -162,7 +162,7 @@ class ShowEmployee extends Component {
                             ]
                           : []
                       }
-                      label="Date of Employees"
+                      label="Date of Employment"
                       value={date}
                       disableOpenOnEnter
                       animateYearScrolling={false}

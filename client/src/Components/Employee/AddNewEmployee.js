@@ -97,6 +97,8 @@ class AddNewEmployee extends Component {
       axios
         .post("/api/employee/", {
           department_objectId,
+          employee_name,
+          work_description,
           avg_employee_productivity,
           benchmark_employee_productivity,
           date
@@ -312,10 +314,10 @@ class AddNewEmployee extends Component {
                   }
                   helperText={
                     avg_employee_productivity === ""
-                      ? "Please enter Avg. Ship Employees(In Tonnes)"
+                      ? "Please enter Avg. Employees Productivity (Lines of Codes per Hour)"
                       : " "
                   }
-                  label="Avg. Ship Employees(In Tonnes)"
+                  label="Avg. Employees Productivity (Lines of Codes per Hour)"
                   type="number"
                   fullWidth
                   InputProps={{
@@ -343,10 +345,10 @@ class AddNewEmployee extends Component {
                   }
                   helperText={
                     benchmark_employee_productivity === ""
-                      ? "Please enter Standard Ship Employees(In Tonnes)"
+                      ? "Please enter Standard Employees Productivity (Lines of Codes per Hour)"
                       : " "
                   }
-                  label="Standard Ship Employees(In Tonnes)"
+                  label="Standard Employees Productivity (Lines of Codes per Hour)"
                   type="number"
                   fullWidth
                   InputProps={{
@@ -384,7 +386,7 @@ class AddNewEmployee extends Component {
                             ]
                           : []
                       }
-                      label="Date of Employees"
+                      label="Date of Employment"
                       value={date}
                       onChange={this.handleCommencementDateChange}
                       disableOpenOnEnter

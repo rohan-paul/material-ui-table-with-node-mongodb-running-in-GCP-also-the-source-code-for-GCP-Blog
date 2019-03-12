@@ -119,7 +119,7 @@ class TableToolbarDepartment extends Component {
             </Typography>
           ) : (
             <Typography variant="h6" id="tableTitle">
-              Commodities
+              Departments
             </Typography>
           )}
         </div>
@@ -325,7 +325,7 @@ class TableToolbarDepartment extends Component {
                   }}
                 >
                   <CSVLink
-                    data={this.props.allCommodities}
+                    data={this.props.allDepartments}
                     style={{ marginRight: "48px", paddingTop: "13px" }}
                   >
                     <FontAwesomeIcon
@@ -374,7 +374,7 @@ class TableToolbarDepartment extends Component {
                       closeSearchFilterCompOnClick={
                         this.closeSearchFilterCompOnClick
                       }
-                      allCommodities={this.props.allCommodities}
+                      allDepartments={this.props.allDepartments}
                       handleColumnToQuery={this.props.handleColumnToQuery}
                       value={searchSelection}
                       onChange={e => this.handleSearchSelection(e)}

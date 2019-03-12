@@ -4,7 +4,7 @@ let express = require("express"),
   router = express.Router(),
   Department = require("../models/department");
 
-// To GET ALL Commodities (without mongoose-paginate)-working
+// To GET ALL Departments (without mongoose-paginate)-working
 router.get("/", (req, res, next) => {
   Department.find(
     {},
