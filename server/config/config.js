@@ -2,7 +2,7 @@
 const mongoose = require("mongoose");
 
 module.exports = {
-  database: process.env.MONGO_DB,
+  database: "mongodb://localhost:27017/mui-table-employees",
 
   options: {
     reconnectTries: Number.MAX_VALUE, // Never stop trying to reconnect
