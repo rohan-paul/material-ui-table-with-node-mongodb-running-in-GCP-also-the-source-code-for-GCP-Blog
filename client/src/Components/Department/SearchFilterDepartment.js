@@ -232,7 +232,7 @@ class SearchFilter extends React.Component {
             <Tooltip
               title={
                 <React.Fragment>
-                  <h6>Clear the Search Filter</h6>
+                  <h2>Clear the Search Filter</h2>
                   <span className={classes.arrow} ref={this.handleArrowRef} />
                 </React.Fragment>
               }

@@ -320,7 +320,7 @@ class EditEmployee extends Component {
                       ? "Please enter Berth Hire"
                       : " "
                   }
-                  label="Avg. Bearth Throughput"
+                  label="Avg. Employee Productivity"
                   type="number"
                   fullWidth
                   InputProps={{
@@ -351,7 +351,7 @@ class EditEmployee extends Component {
                       ? "Please enter Other Services"
                       : " "
                   }
-                  label="Standard Bearth Throughput"
+                  label="Standard Employee Productivity"
                   type="number"
                   fullWidth
                   InputProps={{

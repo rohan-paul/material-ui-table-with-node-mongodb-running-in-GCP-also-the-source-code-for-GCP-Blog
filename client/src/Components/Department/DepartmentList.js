@@ -560,7 +560,7 @@ class DepartmentList extends Component {
             <Tooltip
               title={
                 <React.Fragment>
-                  <h6>Add a new Department</h6>
+                  <h2>Add a new Department</h2>
                   <span className={classes.arrow} ref={this.handleArrowRef} />
                 </React.Fragment>
               }

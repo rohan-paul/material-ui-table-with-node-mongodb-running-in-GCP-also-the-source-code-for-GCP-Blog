@@ -42,6 +42,11 @@ class ShowEmployee extends Component {
   render() {
     const { classes } = this.props;
 
+    const employee_name =
+      this.props.itemToEdit[0] && this.props.itemToEdit[0].employee_name;
+    const work_description =
+      this.props.itemToEdit[0] && this.props.itemToEdit[0].work_description;
+
     const avg_employee_productivity =
       this.props.itemToEdit[0] &&
       this.props.itemToEdit[0].avg_employee_productivity;
@@ -103,12 +108,43 @@ class ShowEmployee extends Component {
                 />
                 <TextField
                   autoFocus
+                  classes={{
+                    root: classes.space
+                  }}
+                  value={employee_name}
+                  label="Employee Name"
+                  type="string"
+                  fullWidth
+                  InputProps={{
+                    classes: {
+                      underline: classes.underline
+                    }
+                  }}
+                />
+                <TextField
+                  autoFocus
+                  multiline
+                  classes={{
+                    root: classes.space
+                  }}
+                  value={work_description}
+                  label="Description of Work"
+                  type="string"
+                  fullWidth
+                  InputProps={{
+                    classes: {
+                      underline: classes.underline
+                    }
+                  }}
+                />
+                <TextField
+                  autoFocus
                   multiline
                   classes={{
                     root: classes.space
                   }}
                   value={avg_employee_productivity}
-                  label="Avg. Bearth Throughput"
+                  label="Avg. Employee Productivity"
                   type="number"
                   fullWidth
                   InputProps={{
@@ -125,7 +161,7 @@ class ShowEmployee extends Component {
                     root: classes.space
                   }}
                   value={benchmark_employee_productivity}
-                  label="Standard Bearth Throughput"
+                  label="Standard Employee Productivity"
                   type="number"
                   fullWidth
                   InputProps={{

@@ -81,11 +81,11 @@ class TableHeadEmployee extends React.Component {
           <Tooltip
             title={
               <React.Fragment>
-                <h6>
+                <h2>
                   {noOfItemsInCurrentPage > 1
                     ? `Select all ${noOfItemsInCurrentPage}`
                     : `Select the item`}
-                </h6>
+                </h2>
                 <span className={classes.arrow} ref={this.handleArrowRef} />
               </React.Fragment>
             }
@@ -142,7 +142,7 @@ class TableHeadEmployee extends React.Component {
                 <Tooltip
                   title={
                     <React.Fragment>
-                      <h6>Sort by {row.label}</h6>
+                      <h2>Sort by {row.label}</h2>
                       <span
                         className={classes.arrow}
                         ref={this.handleArrowRef}

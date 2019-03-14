@@ -41,10 +41,10 @@ class CurrentMonthEmployee extends Component {
         <Tooltip
           title={
             <React.Fragment>
-              <h6>
+              <h2>
                 Clear filter for only {currentMonth} and show all Berth
                 Throughput
-              </h6>
+              </h2>
               <span className={classes.arrow} ref={this.handleArrowRef} />
             </React.Fragment>
           }

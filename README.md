@@ -1,3 +1,5 @@
+<img src="MUI-table.gif">
+
 ### A quite exhaustive React, Node, Mongo App to Create, Edit, Delete and render tabular data. Have implemented filter functionality for text-based search and date-range based search. Have used Material-UI extensively across the app.
 
 ##### Quite a few standard and simple tests have also been implemented with `jest`
@@ -24,7 +26,7 @@ Launches the test runner in the interactive watch mode.<br>
 
 #### All Trials for Heroku deployment I made are in the other duplicate directory (material-ui-table-with-node-mongodb-duplicate-FOR-FAILED-HEROKU-TRIALS), where everything is exact same, only the directory structure is DIFFERENT. Meaning, there, I dont have a separate `server` directory to hold all the server code. Ther `server` files and folder are in the project root itself. ( Have kept the file-tree structure just the same, as Heroku requires a package.json at the root of the project, and so I kept the file structure in that fashion and to exactly replicate my other repo Dev-Book which was successfully deployed in Heroku and which is also a MERN stack app)
 
-Main failure reason and Errors I got in the Terminal -
+1> Main failure reason and Errors I got in the Terminal -
 
 **at=error code=H20 desc="App boot timeout"**
 
@@ -34,6 +36,18 @@ Main failure reason and Errors I got in the Terminal -
 **Error R10 (Boot timeout) -> Web process failed to bind to \$PORT within 60 seconds of launch**
 
 **H10 - App crashed** - A crashed web dyno or a boot timeout on the web dyno will present this error.
+
+2> And when I change the 'npm start' command as below in `package.json`
+
+`"start": "concurrently \"npm run server\" \"npm run client\"",`
+
+I get, **Invalid Host header** error in Heroku. To resolve this, I create a .env.development and include the below
+
+HOST=https://secure-scrubland-57107.herokuapp.com/
+
+per - https://stackoverflow.com/questions/49165232/reactjs-app-in-heroku-invalid-host-header-host-configuration
+
+But did not resolve
 
 ### Some more explanation on the failure
 

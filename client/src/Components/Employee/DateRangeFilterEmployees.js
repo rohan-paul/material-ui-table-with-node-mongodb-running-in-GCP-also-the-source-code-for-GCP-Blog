@@ -276,7 +276,7 @@ class DateRangeFilter extends Component {
               <Tooltip
                 title={
                   <React.Fragment>
-                    <h6>Clear the Date Range Search Filter</h6>
+                    <h2>Clear the Date Range Search Filter</h2>
                     <span className={classes.arrow} ref={this.handleArrowRef} />
                   </React.Fragment>
                 }

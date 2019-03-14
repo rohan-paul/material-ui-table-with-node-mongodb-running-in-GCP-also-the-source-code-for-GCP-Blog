@@ -131,7 +131,7 @@ class TableToolbarDepartment extends Component {
                 <Tooltip
                   title={
                     <React.Fragment>
-                      <h6>Download data for the selected item(s)</h6>
+                      <h2>Download data for the selected item(s)</h2>
                       <span
                         className={classes.arrow}
                         ref={this.handleArrowRef}
@@ -170,7 +170,7 @@ class TableToolbarDepartment extends Component {
                 <Tooltip
                   title={
                     <React.Fragment>
-                      <h6>Download data for the selected item(s)</h6>
+                      <h2>Download data for the selected item(s)</h2>
                       <span
                         className={classes.arrow}
                         ref={this.handleArrowRef}
@@ -208,7 +208,7 @@ class TableToolbarDepartment extends Component {
               <Tooltip
                 title={
                   <React.Fragment>
-                    <h6>Delete</h6>
+                    <h2>Delete</h2>
                     <span className={classes.arrow} ref={this.handleArrowRef} />
                   </React.Fragment>
                 }
@@ -245,7 +245,7 @@ class TableToolbarDepartment extends Component {
               <Tooltip
                 title={
                   <React.Fragment>
-                    <h6>Edit</h6>
+                    <h2>Edit</h2>
                     <span className={classes.arrow} ref={this.handleArrowRef} />
                   </React.Fragment>
                 }
@@ -297,7 +297,7 @@ class TableToolbarDepartment extends Component {
                 <Tooltip
                   title={
                     <React.Fragment>
-                      <h6>Download entire data</h6>
+                      <h2>Download entire data</h2>
                       <span
                         className={classes.arrow}
                         ref={this.handleArrowRef}
@@ -340,7 +340,7 @@ class TableToolbarDepartment extends Component {
                 title={
                   <React.Fragment>
                     {this.state.textFilterCancelTooltip === "" ? (
-                      <h6>Filter List with Search Term</h6>
+                      <h2>Filter List with Search Term</h2>
                     ) : null}
                     <span className={classes.arrow} ref={this.handleArrowRef} />
                   </React.Fragment>

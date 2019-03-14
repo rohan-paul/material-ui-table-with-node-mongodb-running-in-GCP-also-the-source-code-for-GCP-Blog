@@ -529,12 +529,16 @@ class EmployeeList extends Component {
           axios
             .all([
               axios.get(`/api/employee/current/today`),
-              axios.post(`/api/employee/paginate/current/today`, {
-                params: {
-                  page: this.state.page,
-                  rowsperpage: this.state.rowsPerPage
+              axios.post(
+                `/api/employee/paginate/current/today`,
+                {},
+                {
+                  params: {
+                    page: this.state.page,
+                    rowsperpage: this.state.rowsPerPage
+                  }
                 }
-              })
+              )
             ])
             .then(
               axios.spread(
@@ -1026,7 +1030,7 @@ class EmployeeList extends Component {
             <Tooltip
               title={
                 <React.Fragment>
-                  <h6>Add a new Employee Record</h6>
+                  <h2>Add a new Employee Record</h2>
                   <span className={classes.arrow} ref={this.handleArrowRef} />
                 </React.Fragment>
               }

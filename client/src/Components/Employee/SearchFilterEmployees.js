@@ -149,6 +149,16 @@ class SearchFilter extends React.Component {
             value: item.date,
             label: item.date
           }));
+        case "employee_name":
+          return this.props.totalItemsFormatted.map(item => ({
+            value: item.employee_name,
+            label: item.employee_name
+          }));
+        case "date":
+          return this.props.totalItemsFormatted.map(item => ({
+            value: item.work_description,
+            label: item.work_description
+          }));
         case "department_name":
           return this.props.totalItemsFormatted.map(item => ({
             value: item.department_name,
@@ -225,17 +235,19 @@ class SearchFilter extends React.Component {
                 })
               }
             >
+              <MenuItem value="employee_name" primaryText="Employment Name" />
               <MenuItem
-                value="department_name"
-                primaryText="Imported Department Name"
+                value="work_description"
+                primaryText="Work Description"
               />
-              <MenuItem value="date" primaryText="Employees Date" />
+              <MenuItem value="department_name" primaryText="Department Name" />
+              <MenuItem value="date" primaryText="Employment Date" />
             </SelectField>
 
             <Tooltip
               title={
                 <React.Fragment>
-                  <h6>Clear the Search Filter</h6>
+                  <h2>Clear the Search Filter</h2>
                   <span className={classes.arrow} ref={this.handleArrowRef} />
                 </React.Fragment>
               }

@@ -55,7 +55,7 @@ class TablePaginationActions extends React.Component {
         <Tooltip
           title={
             <React.Fragment>
-              <h6>First page</h6>
+              <h2>First page</h2>
               <span className={classes.arrow} ref={this.handleArrowRef} />
             </React.Fragment>
           }
@@ -90,7 +90,7 @@ class TablePaginationActions extends React.Component {
         <Tooltip
           title={
             <React.Fragment>
-              <h6>Previous page</h6>
+              <h2>Previous page</h2>
               <span className={classes.arrow} ref={this.handleArrowRef} />
             </React.Fragment>
           }
@@ -129,7 +129,7 @@ class TablePaginationActions extends React.Component {
         <Tooltip
           title={
             <React.Fragment>
-              <h6>Next page</h6>
+              <h2>Next page</h2>
               <span className={classes.arrow} ref={this.handleArrowRef} />
             </React.Fragment>
           }
@@ -168,7 +168,7 @@ class TablePaginationActions extends React.Component {
         <Tooltip
           title={
             <React.Fragment>
-              <h6>Last page</h6>
+              <h2>Last page</h2>
               <span className={classes.arrow} ref={this.handleArrowRef} />
             </React.Fragment>
           }

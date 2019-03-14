@@ -214,7 +214,7 @@ class TableToolbarEmployee extends Component {
                 <Tooltip
                   title={
                     <React.Fragment>
-                      <h6>Download data for the selected item(s)</h6>
+                      <h2>Download data for the selected item(s)</h2>
                       <span
                         className={classes.arrow}
                         ref={this.handleArrowRef}
@@ -252,7 +252,7 @@ class TableToolbarEmployee extends Component {
               <Tooltip
                 title={
                   <React.Fragment>
-                    <h6>View Item Details</h6>
+                    <h2>View Item Details</h2>
                     <span className={classes.arrow} ref={this.handleArrowRef} />
                   </React.Fragment>
                 }
@@ -297,7 +297,7 @@ class TableToolbarEmployee extends Component {
                 <Tooltip
                   title={
                     <React.Fragment>
-                      <h6>Download data for the selected item(s)</h6>
+                      <h2>Download data for the selected item(s)</h2>
                       <span
                         className={classes.arrow}
                         ref={this.handleArrowRef}
@@ -335,7 +335,7 @@ class TableToolbarEmployee extends Component {
               <Tooltip
                 title={
                   <React.Fragment>
-                    <h6>Delete</h6>
+                    <h2>Delete</h2>
                     <span className={classes.arrow} ref={this.handleArrowRef} />
                   </React.Fragment>
                 }
@@ -372,7 +372,7 @@ class TableToolbarEmployee extends Component {
               <Tooltip
                 title={
                   <React.Fragment>
-                    <h6>Edit</h6>
+                    <h2>Edit</h2>
                     <span className={classes.arrow} ref={this.handleArrowRef} />
                   </React.Fragment>
                 }
@@ -430,7 +430,7 @@ class TableToolbarEmployee extends Component {
                 <Tooltip
                   title={
                     <React.Fragment>
-                      <h6>Download entire data</h6>
+                      <h2>Download entire data</h2>
                       <span
                         className={classes.arrow}
                         ref={this.handleArrowRef}
@@ -485,7 +485,7 @@ class TableToolbarEmployee extends Component {
                 title={
                   <React.Fragment>
                     {this.state.dateRangeTooltip === "" ? (
-                      <h6>Find all Employees between two dates </h6>
+                      <h2>Find all Employees between two dates </h2>
                     ) : null}
                     <span className={classes.arrow} ref={this.handleArrowRef} />
                   </React.Fragment>
@@ -555,7 +555,7 @@ class TableToolbarEmployee extends Component {
                 title={
                   <React.Fragment>
                     {this.state.textFilterCancelTooltip === "" ? (
-                      <h6>Filter/Search Table</h6>
+                      <h2>Filter/Search Table</h2>
                     ) : null}
                     <span className={classes.arrow} ref={this.handleArrowRef} />
                   </React.Fragment>
