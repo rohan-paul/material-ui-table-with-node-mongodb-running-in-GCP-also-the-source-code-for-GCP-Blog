@@ -1,6 +1,6 @@
 <img src="MUI-table.gif">
 
-### A quite exhaustive React, Node, Mongo App to Create, Edit, Delete and render tabular data. Have implemented filter functionality for text-based search and date-range based search. Have used Material-UI extensively across the app.
+### A quite exhaustive React, Node/Express, MongoDB App for rendering tabular data with pagination with full Create, Edit, Delete functionality. Also, have implemented filter functionality for text-based search and date-range based search. Have used Material-UI extensively across the app. Functinality to download the data in `.csv` format.
 
 ##### Quite a few standard and simple tests have also been implemented with `jest`
 

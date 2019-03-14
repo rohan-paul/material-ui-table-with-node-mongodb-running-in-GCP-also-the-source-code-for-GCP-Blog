@@ -239,7 +239,7 @@ class DateRangeFilter extends Component {
                     ? [/\d/, /\d/, "/", /\d/, /\d/, "/", /\d/, /\d/, /\d/, /\d/]
                     : []
                 }
-                label="Start Date of Employment"
+                label="Date of Employment (starting search date)"
                 disableOpenOnEnter
                 animateYearScrolling={false}
                 style={{ paddingRight: "5px" }}
@@ -262,7 +262,7 @@ class DateRangeFilter extends Component {
                     ? [/\d/, /\d/, "/", /\d/, /\d/, "/", /\d/, /\d/, /\d/, /\d/]
                     : []
                 }
-                label="End Date of Employment"
+                label="Date of Employment (ending search date)"
                 disableOpenOnEnter
                 animateYearScrolling={false}
                 style={{ paddingLeft: "5px" }}
