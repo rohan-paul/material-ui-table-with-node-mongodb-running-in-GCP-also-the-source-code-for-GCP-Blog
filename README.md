@@ -14,7 +14,7 @@ Then, start mongodb service with `sudo service mongod start` and then finally ru
 
 `npm run dev`
 
-This will start both the client (port 3000) and server (port 5000) and launch the site in port 3000.
+This will start both the client (port 3000) and server (port 8080) and launch the site in port 3000.
 
 ### Other Commands
 

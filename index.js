@@ -74,8 +74,15 @@ app.use((err, req, res, next) => {
   res.status(422).send({ error: err._message });
 });
 
-app.listen(5000, () => {
-  console.log("Express Server running on port 5000");
+// app.listen(8080, () => {
+//   console.log("Express Server running on port 8080");
+// });
+
+const server = app.listen(8080, () => {
+  const host = server.address().address;
+  const port = server.address().port;
+
+  console.log(`Example app listening at http://${host}:${port}`);
 });
 
 // Graceful shutdown, on sigint ( generated with <Ctrl>+C in the terminal ) - kill/close database connection and exit

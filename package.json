@@ -2,15 +2,16 @@
     "name": "server",
     "version": "1.0.0",
     "engines": {
-        "node": "11.8.0"
+        "node": "10.15.3"
     },
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "node index.js",
-        "server": "SET NODE_ENV=dev & nodemon index.js",
-        "client": "npm run start --prefix ../client",
+        "start": "nodemon index.js ",
+        "server": "nodemon index.js",
+        "client": "npm start --prefix client",
         "dev": "concurrently \"npm run server\" \"npm run client\"",
+        "heroku-postbuild": "cd client && npm install && npm run build",
         "fix-code": "prettier-eslint --write 'src/**/*.{js,jsx}' ",
         "fix-styles": "prettier-stylelint --write 'src/**/*.{css,scss}' "
     },
@@ -19,13 +20,13 @@
     "dependencies": {
         "adm-zip": "^0.4.13",
         "async": "^2.6.1",
-        "babel-eslint": "^10.0.1",
         "body-parser": "^1.18.3",
         "buffer-to-stream": "^1.0.0",
         "client-sessions": "^0.8.0",
         "concurrently": "^4.1.0",
         "cookie-session": "^2.0.0-beta.3",
         "dotenv": "^6.2.0",
+        "eslint": "5.12.0",
         "eslint-config-airbnb": "^17.1.0",
         "eslint-plugin-import": "^2.16.0",
         "eslint-plugin-jsx-a11y": "^6.2.1",
