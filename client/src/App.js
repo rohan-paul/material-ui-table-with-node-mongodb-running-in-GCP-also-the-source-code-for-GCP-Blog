@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, BrowserRouter, Switch, Router } from "react-router-dom";
+import { Route, BrowserRouter, Switch, Router, Link } from "react-router-dom";
 // import Routes from "./Routes";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core";
 import history from "./history";
@@ -15,6 +15,7 @@ import EmployeeList from "./Components/Employee/EmployeeList";
 import DepartmentList from "./Components/Department/DepartmentList";
 import NotFound from "./Components/NotFound";
 import ComponentHeader from "./Components/ComponentHeader";
+import LandingPage from "./Components/LandingPage";
 
 library.add(faFilter, faDownload, faCalendarAlt);
 
@@ -84,45 +85,48 @@ class App extends Component {
     };
 
     return (
-      <BrowserRouter>
-        <Router history={history}>
-          <div>
-            <ComponentHeader
-              onSideDrawerOpen={this.onSideDrawerOpen}
-              onSideDrawerClose={this.onSideDrawerClose}
-            />
-            <div style={contentStyle}>
-              <Switch>
-                <Route
-                  exact
-                  path="/employee"
-                  render={props => (
-                    <EmployeeList
-                      {...props}
-                      allDepartmentsForSiblingCommunication={
-                        allDepartmentsForSiblingCommunication
-                      }
-                    />
-                  )}
-                />
-                <Route
-                  exact
-                  path="/department"
-                  render={props => (
-                    <DepartmentList
-                      {...props}
-                      setDepartmentForSiblingCommunication={
-                        this.setDepartmentForSiblingCommunication
-                      }
-                    />
-                  )}
-                />
-                <Route component={NotFound} />
-              </Switch>
+      <div>
+        <BrowserRouter basename="/employee">
+          <Router history={history}>
+            <div>
+              <ComponentHeader
+                onSideDrawerOpen={this.onSideDrawerOpen}
+                onSideDrawerClose={this.onSideDrawerClose}
+              />
+              <div style={contentStyle}>
+                <Switch>
+                  <Route exact path="/" render={props => <LandingPage />} />
+                  <Route
+                    exact
+                    path="/employee"
+                    render={props => (
+                      <EmployeeList
+                        {...props}
+                        allDepartmentsForSiblingCommunication={
+                          allDepartmentsForSiblingCommunication
+                        }
+                      />
+                    )}
+                  />
+                  <Route
+                    exact
+                    path="/department"
+                    render={props => (
+                      <DepartmentList
+                        {...props}
+                        setDepartmentForSiblingCommunication={
+                          this.setDepartmentForSiblingCommunication
+                        }
+                      />
+                    )}
+                  />
+                  <Route component={NotFound} />
+                </Switch>
+              </div>
             </div>
-          </div>
-        </Router>
-      </BrowserRouter>
+          </Router>
+        </BrowserRouter>
+      </div>
     );
   }
 }

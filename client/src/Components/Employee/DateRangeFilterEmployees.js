@@ -19,8 +19,8 @@ const moment = require("moment");
 
 class DateRangeFilter extends Component {
   state = {
-    start_date: "",
-    end_date: "",
+    start_date: new Date(),
+    end_date: new Date(),
     dateRangeQueryResult: [],
     totalDateRangeSearchResultChild: [],
     openWrongDateRangeSnackBar: false,
@@ -186,8 +186,8 @@ class DateRangeFilter extends Component {
   closeDateRangeQuery = () => {
     this.setState(
       {
-        start_date: "",
-        end_date: "",
+        start_date: new Date(),
+        end_date: new Date(),
         dateRangeQueryResult: [],
         totalDateRangeSearchResultChild: []
       },

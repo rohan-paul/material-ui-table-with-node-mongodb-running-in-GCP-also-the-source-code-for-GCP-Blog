@@ -478,6 +478,7 @@ class DepartmentList extends Component {
                             >
                               {n.name}
                             </CustomTableCell>
+
                             <CustomTableCell
                               align="center"
                               style={{
@@ -485,31 +486,18 @@ class DepartmentList extends Component {
                                 maxWidth: 0,
                                 overflow: "hidden",
                                 textOverflow: "ellipsis",
-                                width: "18%"
-                              }}
-                            >
-                              {n.employee_name}
-                            </CustomTableCell>
-                            <CustomTableCell
-                              align="center"
-                              style={{
-                                whiteSpace: "nowrap",
-                                maxWidth: 0,
-                                overflow: "hidden",
-                                textOverflow: "ellipsis",
-                                width: "18%"
+                                width: "10%"
                               }}
                             >
                               {n.work_description}
                             </CustomTableCell>
                             <CustomTableCell
-                              align="center"
+                              align="left"
                               style={{
                                 whiteSpace: "nowrap",
                                 maxWidth: 0,
                                 overflow: "hidden",
-                                textOverflow: "ellipsis",
-                                widthRight: "80%"
+                                textOverflow: "ellipsis"
                               }}
                             >
                               {n.type}

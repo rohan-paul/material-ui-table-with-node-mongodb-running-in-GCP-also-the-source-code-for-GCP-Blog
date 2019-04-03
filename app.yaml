@@ -1,7 +1,5 @@
 runtime: nodejs
 env: flex
-runtime: nodejs
-env: flex
 
 # https://cloud.google.com/appengine/docs/flexible/nodejs/configuring-your-app-with-app-yaml
 # This sample incurs costs to run on the App Engine flexible environment.
@@ -24,4 +22,3 @@ handlers:
     static_dir: client/build
 # manual_scaling - Lock instances to 1 . using App Engine Flexible will create VM instances to serve from. If you want to lower your usage, you might restrict your App to just one 1 instance (probably not what you want in production, but maybe what you want in development).
 # https://stackoverflow.com/questions/37381694/google-app-engine-how-to-correctly-deploy-an-app
-

@@ -1,5 +1,7 @@
 <img src="MUI-table.gif">
 
+### [Live in Google App Engine](https://mui-table-3.appspot.com)
+
 ### A quite exhaustive React, Node/Express, MongoDB App for rendering tabular data with pagination with full Create, Edit, Delete functionality. Also, have implemented filter functionality for text-based search and date-range based search. Have used Material-UI extensively across the app. Functinality to download the data in `.csv` format.
 
 ##### Quite a few standard and simple tests have also been implemented with `jest`
@@ -15,6 +17,19 @@ Then, start mongodb service with `sudo service mongod start` and then finally ru
 `npm run dev`
 
 This will start both the client (port 3000) and server (port 8080) and launch the site in port 3000.
+
+### To build the project for production and server the React static files from /client/build
+
+```
+cd client
+
+npm run build
+
+cd ..
+
+npm start
+
+```
 
 ### Other Commands
 
@@ -103,3 +118,6 @@ You are getting "Error R14 (Memory quota exceeded)". [Check R14 - Memory Quota E
 
 ```
 ````
+
+**2-nd Issue** - If I put the below in package.json while running the app locally, the app is not rendering anything
+"homepage": "https://mui-table-3.appspot.com/employee"

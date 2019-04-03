@@ -50,6 +50,7 @@
         "react-select": "^2.3.0",
         "react-social-icons": "^4.1.0",
         "react-vis": "^1.11.6",
+        "react-welcome-page": "^0.2.1",
         "reactstrap": "^7.1.0",
         "sinon": "^7.2.4",
         "styled-components": "^4.1.3"
