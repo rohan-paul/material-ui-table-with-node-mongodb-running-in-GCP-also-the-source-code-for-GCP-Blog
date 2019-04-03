@@ -34,65 +34,24 @@ morgan.token("id", function getId(req) {
   return req.id;
 });
 
-// *****  Start of serving build's index.html file for Deploying to Google App Engine  *******
+// Serving build's index.html file for Deploying to Google App Engine is MUST for production
 
 // From - https://facebook.github.io/create-react-app/docs/deployment
 app.use(express.static(path.join(__dirname, "/client/build")));
 
-// The below two routes are Perfectly Working with GAE ***
-
-app.get("/", function(req, res) {
-  res.status(200).sendFile(path.join(__dirname, "/client/build", "index.html"));
-});
-
-app.get("/employee", function(req, res) {
-  res.status(200).sendFile(path.join(__dirname, "/client/build", "index.html"));
-});
-
-// Perfectly Working with GAE
-app.get("/department", function(req, res) {
-  res.status(200).sendFile(path.join(__dirname, "/client/build", "index.html"));
-});
-
-// This way of coding a catch-all route, although was sometime rendering the UI, but was NOT working as mongodb data from Atlas was not being fetched.
-// app.get("*", async (req, res) => {
-//   const path = await url.parse(req.url).pathname;
-//   console.log("REQ.URL IS ", path);
-//   try {
-//     if (
-//       path === "/api/employee/" ||
-//       path === "/employee" ||
-//       path === "/api/employee/current/today"
-//     ) {
-//       res.sendFile(path.join(__dirname, "/client/build", "index.html"));
-//     }
-//   } catch {
-//     console.log("Error happened while parsing URL");
-//   }
+// The below two routes are also Perfectly Working with GAE, but I used the 'catchAll' routes below
+// app.get("/employee", function(req, res) {
+//   res.status(200).sendFile(path.join(__dirname, "/client/build", "index.html"));
 // });
 
-// graphQLServer.get('*', function (req, res) {
-//     res.status(200).sendFile(path.resolve(__dirname, '..', 'public', 'index.html'));
-//   });
-
-// app.get("*", function(req, res) {
-//   res
-//     .status(200)
-//     .sendFile(path.resolve(__dirname, "/client/build", "index.html"));
-// });
-
-// The "catchall" handler: for any request that doesn't
-// match any route after "/" below, send back React's index.html file.
-// app.get("/*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "/client/build", "index.html"));
+// app.get("/department", function(req, res) {
+//   res.status(200).sendFile(path.join(__dirname, "/client/build", "index.html"));
 // });
 
 // The below IS ALSO WORKING when run < npm run dev > locally - but ofcourse it will not refer to the /client/build folder
 // app.get("/", function(req, res) {
 //   res.sendFile(path.join(__dirname, "/client/public", "index.html"));
 // });
-
-// **** End of serving files for Deploying to Google App Engine *******
 
 // Morgan - For saving logs to a log file
 let accessLogStream = fs.createWriteStream(__dirname + "/access.log", {
@@ -128,6 +87,12 @@ app.use(
 
 app.use("/api/department", departmentRoutes);
 app.use("/api/employee", employeeRoutes);
+
+// Only now, AFTER the above /api/ routes, the "catchall" handler routes: for any request that doesn't match any route after "/" below and send back React's index.html file.
+// Note, this 'catchall" route MUST be put after the above two /api/ routes. Otherwise those api routes will never be hit
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "/client/build/index.html"));
+});
 
 app.use((err, req, res, next) => {
   res.status(422).send({ error: err._message });
