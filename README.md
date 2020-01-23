@@ -36,6 +36,3 @@ gcloud app deploy --stop-previous-version
 #### `npm test`
 
 Launches the test runner in the interactive watch mode.<br>
-
-**2-nd Issue** - If I put the below in package.json while running the app locally, the app is not rendering anything
-"homepage": "https://mui-table-3.appspot.com/employee"
