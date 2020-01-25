@@ -1,23 +1,23 @@
-import React, { Component } from "react";
-import classNames from "classnames";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
-import Tooltip from "@material-ui/core/Tooltip";
-import DeleteIcon from "@material-ui/icons/Delete";
-import toolbarStyles from "../commonStyles/toolbarStyles";
-import { CSVLink } from "react-csv";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ShowEmployee from "./ShowEmployees";
-import EditEmployee from "./EditEmployees";
-import SearchFilter from "./SearchFilterEmployees";
-import DateRangeFilter from "./DateRangeFilterEmployees";
-import CurrentMonthEmployee from "./CurrentMonthEmployees";
-import Paper from "@material-ui/core/Paper";
-import requiredIf from "react-required-if"; // React PropType to conditionally add .isRequired based on other props
-const moment = require("moment");
+import React, { Component } from "react"
+import classNames from "classnames"
+import PropTypes from "prop-types"
+import { withStyles } from "@material-ui/core/styles"
+import Toolbar from "@material-ui/core/Toolbar"
+import Typography from "@material-ui/core/Typography"
+import IconButton from "@material-ui/core/IconButton"
+import Tooltip from "@material-ui/core/Tooltip"
+import DeleteIcon from "@material-ui/icons/Delete"
+import toolbarStyles from "../commonStyles/toolbarStyles"
+import { CSVLink } from "react-csv"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import ShowEmployee from "./ShowEmployees"
+import EditEmployee from "./EditEmployees"
+import SearchFilter from "./SearchFilterEmployees"
+import DateRangeFilter from "./DateRangeFilterEmployees"
+import CurrentMonthEmployee from "./CurrentMonthEmployees"
+import Paper from "@material-ui/core/Paper"
+import requiredIf from "react-required-if" // React PropType to conditionally add .isRequired based on other props
+const moment = require("moment")
 
 class TableToolbarEmployee extends Component {
   state = {
@@ -30,38 +30,38 @@ class TableToolbarEmployee extends Component {
     dateRangeTooltip: "",
     textFilterCancelTooltip: "",
     arrowRef: null
-  };
+  }
 
   // function to handle the placement of the arrow on top of the Tooltip
   handleArrowRef = node => {
     this.setState({
       arrowRef: node
-    });
-  };
+    })
+  }
 
   setDateRangeTooltip = tooltipfromchild => {
     this.setState({
       dateRangeTooltip: tooltipfromchild
-    });
-  };
+    })
+  }
 
   clearDateRangeTooltip = () => {
     this.setState({
       dateRangeTooltip: ""
-    });
-  };
+    })
+  }
 
   setTextFilterTooltip = tooltipfromchild => {
     this.setState({
       textFilterCancelTooltip: tooltipfromchild
-    });
-  };
+    })
+  }
 
   clearTextFilterTooltip = () => {
     this.setState({
       textFilterCancelTooltip: ""
-    });
-  };
+    })
+  }
 
   handleSearchInput = (e, { action }) => {
     if (
@@ -69,11 +69,11 @@ class TableToolbarEmployee extends Component {
       action === "input-blur" ||
       action === "set-value"
     ) {
-      return;
+      return
     } else {
-      this.setState({ searchValue: e });
+      this.setState({ searchValue: e })
     }
-  };
+  }
 
   // In this TableToolbarEmployee component, I set the searchValue for the query, and with the handleQueryString() function I pass that value up to the parent List component .
   handleSearchSelection = ({ value }) => {
@@ -84,19 +84,19 @@ class TableToolbarEmployee extends Component {
       },
       () => {
         if (this.state.searchValue) {
-          this.props.handleQueryString(this.state.searchValue);
+          this.props.handleQueryString(this.state.searchValue)
         }
       }
-    );
-  };
+    )
+  }
 
   openSearchFilterCompOnClick = () => {
     if (this.state.shouldSearchFilterCompOpen === false) {
       this.setState({
         shouldSearchFilterCompOpen: true
-      });
+      })
     }
-  };
+  }
 
   closeSearchFilterCompOnClick = () => {
     this.setState(
@@ -105,33 +105,33 @@ class TableToolbarEmployee extends Component {
         searchValue: ""
       },
       () => {
-        this.props.clearAllQueryString();
-        this.clearTextFilterTooltip();
+        this.props.clearAllQueryString()
+        this.clearTextFilterTooltip()
       }
-    );
-  };
+    )
+  }
 
   closeCurrentMonthDataCompOnClick = () => {
     this.setState({
       shouldCurrentMonthDataCompOpen: false
-    });
-    this.props.clearCurrentMonthSearch();
-  };
+    })
+    this.props.clearCurrentMonthSearch()
+  }
 
   closeCurrentDateDataCompOnClick = () => {
     this.setState({
       shouldCurrentDateDataCompOpen: false
-    });
-    this.props.clearCurrentDateSearch();
-  };
+    })
+    this.props.clearCurrentDateSearch()
+  }
 
   openDateRangeFilterCompOnClick = () => {
     if (this.state.shouldDateRangeFilterCompOpen === false) {
       this.setState({
         shouldDateRangeFilterCompOpen: true
-      });
+      })
     }
-  };
+  }
 
   closeDateRangeFilterCompOnClick = () => {
     this.setState(
@@ -139,10 +139,10 @@ class TableToolbarEmployee extends Component {
         shouldDateRangeFilterCompOpen: false
       },
       () => {
-        this.props.clearUserSearchedDateRange();
+        this.props.clearUserSearchedDateRange()
       }
-    );
-  };
+    )
+  }
 
   render() {
     const {
@@ -153,14 +153,14 @@ class TableToolbarEmployee extends Component {
       editItem,
       unSelectItems,
       classes
-    } = this.props;
+    } = this.props
 
-    const { searchValue, searchSelection } = this.state;
+    const { searchValue, searchSelection } = this.state
 
-    const momentMonthNumber = moment().month();
+    const momentMonthNumber = moment().month()
     const currentMonth = moment(moment().month(momentMonthNumber)).format(
       "MMMM"
-    );
+    )
 
     return (
       <Toolbar
@@ -198,7 +198,7 @@ class TableToolbarEmployee extends Component {
                   shouldCurrentMonthDataCompOpen: true
                 },
                 () => {
-                  this.props.getCurrentMonthData();
+                  this.props.getCurrentMonthData()
                 }
               )
             }
@@ -211,209 +211,66 @@ class TableToolbarEmployee extends Component {
           {numSelected > 0 ? (
             <div style={{ display: "flex", flexDirection: "row" }}>
               {numSelected === 1 ? (
-                <Tooltip
-                  title={
-                    <React.Fragment>
-                      <h2>Download data for the selected item(s)</h2>
-                      <span
-                        className={classes.arrow}
-                        ref={this.handleArrowRef}
-                      />
-                    </React.Fragment>
-                  }
-                  placement="top-end"
-                  classes={{
-                    tooltip: classes.bootstrapTooltip,
-                    popper: classes.bootstrapPopper,
-                    tooltipPlacementLeft: classes.bootstrapPlacementLeft,
-                    tooltipPlacementRight: classes.bootstrapPlacementRight,
-                    tooltipPlacementTop: classes.bootstrapPlacementTop,
-                    tooltipPlacementBottom: classes.bootstrapPlacementBottom
-                  }}
-                  PopperProps={{
-                    popperOptions: {
-                      modifiers: {
-                        arrow: {
-                          enabled: Boolean(this.state.arrowRef),
-                          element: this.state.arrowRef
-                        }
-                      }
-                    }
-                  }}
+                <CSVLink
+                  data={this.props.downloadSelectedItems}
+                  style={{ marginRight: "24px", paddingTop: "25px" }}
                 >
-                  <CSVLink
-                    data={this.props.downloadSelectedItems}
-                    style={{ marginRight: "24px", paddingTop: "25px" }}
-                  >
-                    <FontAwesomeIcon icon="download" size="1x" color="black" />
-                  </CSVLink>
-                </Tooltip>
+                  <FontAwesomeIcon icon="download" size="1x" color="black" />
+                </CSVLink>
               ) : null}
-              <Tooltip
-                title={
-                  <React.Fragment>
-                    <h2>View Item Details</h2>
-                    <span className={classes.arrow} ref={this.handleArrowRef} />
-                  </React.Fragment>
-                }
-                placement="top-end"
-                classes={{
-                  tooltip: classes.bootstrapTooltip,
-                  popper: classes.bootstrapPopper,
-                  tooltipPlacementLeft: classes.bootstrapPlacementLeft,
-                  tooltipPlacementRight: classes.bootstrapPlacementRight,
-                  tooltipPlacementTop: classes.bootstrapPlacementTop,
-                  tooltipPlacementBottom: classes.bootstrapPlacementBottom
-                }}
-                PopperProps={{
-                  popperOptions: {
-                    modifiers: {
-                      arrow: {
-                        enabled: Boolean(this.state.arrowRef),
-                        element: this.state.arrowRef
-                      }
-                    }
-                  }
-                }}
+
+              <IconButton
+                aria-label="Show"
+                variant="contained"
+                className={classes.button}
+                style={{ marginRight: "20px" }}
               >
-                <IconButton
-                  aria-label="Show"
-                  variant="contained"
-                  className={classes.button}
-                  style={{ marginRight: "20px" }}
-                >
-                  {numSelected === 1 ? (
-                    <div style={{ display: "flex", flexDirection: "row" }}>
-                      <ShowEmployee
-                        itemToEdit={itemToEdit}
-                        checkedItems={this.props.checkedItems}
-                      />
-                    </div>
-                  ) : null}
-                </IconButton>
-              </Tooltip>
+                {numSelected === 1 ? (
+                  <div style={{ display: "flex", flexDirection: "row" }}>
+                    <ShowEmployee
+                      itemToEdit={itemToEdit}
+                      checkedItems={this.props.checkedItems}
+                    />
+                  </div>
+                ) : null}
+              </IconButton>
 
               {numSelected > 1 ? (
-                <Tooltip
-                  title={
-                    <React.Fragment>
-                      <h2>Download data for the selected item(s)</h2>
-                      <span
-                        className={classes.arrow}
-                        ref={this.handleArrowRef}
-                      />
-                    </React.Fragment>
-                  }
-                  placement="top-end"
-                  classes={{
-                    tooltip: classes.bootstrapTooltip,
-                    popper: classes.bootstrapPopper,
-                    tooltipPlacementLeft: classes.bootstrapPlacementLeft,
-                    tooltipPlacementRight: classes.bootstrapPlacementRight,
-                    tooltipPlacementTop: classes.bootstrapPlacementTop,
-                    tooltipPlacementBottom: classes.bootstrapPlacementBottom
-                  }}
-                  PopperProps={{
-                    popperOptions: {
-                      modifiers: {
-                        arrow: {
-                          enabled: Boolean(this.state.arrowRef),
-                          element: this.state.arrowRef
-                        }
-                      }
-                    }
-                  }}
+                <CSVLink
+                  data={this.props.downloadSelectedItems}
+                  style={{ marginRight: "24px", paddingTop: "13px" }}
                 >
-                  <CSVLink
-                    data={this.props.downloadSelectedItems}
-                    style={{ marginRight: "24px", paddingTop: "13px" }}
-                  >
-                    <FontAwesomeIcon icon="download" size="1x" color="black" />
-                  </CSVLink>
-                </Tooltip>
+                  <FontAwesomeIcon icon="download" size="1x" color="black" />
+                </CSVLink>
               ) : null}
-              <Tooltip
-                title={
-                  <React.Fragment>
-                    <h2>Delete</h2>
-                    <span className={classes.arrow} ref={this.handleArrowRef} />
-                  </React.Fragment>
-                }
-                placement="top-end"
-                classes={{
-                  tooltip: classes.bootstrapTooltip,
-                  popper: classes.bootstrapPopper,
-                  tooltipPlacementLeft: classes.bootstrapPlacementLeft,
-                  tooltipPlacementRight: classes.bootstrapPlacementRight,
-                  tooltipPlacementTop: classes.bootstrapPlacementTop,
-                  tooltipPlacementBottom: classes.bootstrapPlacementBottom
-                }}
-                PopperProps={{
-                  popperOptions: {
-                    modifiers: {
-                      arrow: {
-                        enabled: Boolean(this.state.arrowRef),
-                        element: this.state.arrowRef
-                      }
-                    }
-                  }
-                }}
+
+              <IconButton
+                aria-label="Delete"
+                onClick={confirmDeleteCustom.bind(null, checkedItems)}
+                variant="contained"
+                className={classes.button}
+                style={{ marginRight: "20px" }}
               >
-                <IconButton
-                  aria-label="Delete"
-                  onClick={confirmDeleteCustom.bind(null, checkedItems)}
-                  variant="contained"
-                  className={classes.button}
-                  style={{ marginRight: "20px" }}
-                >
-                  <DeleteIcon className={classes.rightIcon} />
-                </IconButton>
-              </Tooltip>
-              <Tooltip
-                title={
-                  <React.Fragment>
-                    <h2>Edit</h2>
-                    <span className={classes.arrow} ref={this.handleArrowRef} />
-                  </React.Fragment>
-                }
-                placement="top-end"
-                classes={{
-                  tooltip: classes.bootstrapTooltip,
-                  popper: classes.bootstrapPopper,
-                  tooltipPlacementLeft: classes.bootstrapPlacementLeft,
-                  tooltipPlacementRight: classes.bootstrapPlacementRight,
-                  tooltipPlacementTop: classes.bootstrapPlacementTop,
-                  tooltipPlacementBottom: classes.bootstrapPlacementBottom
-                }}
-                PopperProps={{
-                  popperOptions: {
-                    modifiers: {
-                      arrow: {
-                        enabled: Boolean(this.state.arrowRef),
-                        element: this.state.arrowRef
-                      }
-                    }
-                  }
-                }}
+                <DeleteIcon className={classes.rightIcon} />
+              </IconButton>
+
+              <IconButton
+                aria-label="Edit"
+                variant="contained"
+                className={classes.button}
               >
-                <IconButton
-                  aria-label="Edit"
-                  variant="contained"
-                  className={classes.button}
-                >
-                  {numSelected === 1 ? (
-                    <EditEmployee
-                      editItemToParentState={editItem}
-                      itemToEdit={itemToEdit}
-                      unSelectItems={unSelectItems}
-                      checkedItems={this.props.checkedItems}
-                      allDepartmentsForSiblingCommunication={
-                        this.props.allDepartmentsForSiblingCommunication
-                      }
-                    />
-                  ) : null}
-                </IconButton>
-              </Tooltip>
+                {numSelected === 1 ? (
+                  <EditEmployee
+                    editItemToParentState={editItem}
+                    itemToEdit={itemToEdit}
+                    unSelectItems={unSelectItems}
+                    checkedItems={this.props.checkedItems}
+                    allDepartmentsForSiblingCommunication={
+                      this.props.allDepartmentsForSiblingCommunication
+                    }
+                  />
+                ) : null}
+              </IconButton>
             </div>
           ) : (
             <div
@@ -427,47 +284,12 @@ class TableToolbarEmployee extends Component {
               <div className={classes.spacerCurrentMonth} />
               {!this.state.shouldDateRangeFilterCompOpen &&
               !this.state.shouldSearchFilterCompOpen ? (
-                <Tooltip
-                  title={
-                    <React.Fragment>
-                      <h2>Download entire data</h2>
-                      <span
-                        className={classes.arrow}
-                        ref={this.handleArrowRef}
-                      />
-                    </React.Fragment>
-                  }
-                  placement="top-end"
-                  classes={{
-                    tooltip: classes.bootstrapTooltip,
-                    popper: classes.bootstrapPopper,
-                    tooltipPlacementLeft: classes.bootstrapPlacementLeft,
-                    tooltipPlacementRight: classes.bootstrapPlacementRight,
-                    tooltipPlacementTop: classes.bootstrapPlacementTop,
-                    tooltipPlacementBottom: classes.bootstrapPlacementBottom
-                  }}
-                  PopperProps={{
-                    popperOptions: {
-                      modifiers: {
-                        arrow: {
-                          enabled: Boolean(this.state.arrowRef),
-                          element: this.state.arrowRef
-                        }
-                      }
-                    }
-                  }}
+                <CSVLink
+                  data={this.props.totalItemsFormatted}
+                  style={{ marginRight: "24px", paddingTop: "13px" }}
                 >
-                  <CSVLink
-                    data={this.props.totalItemsFormatted}
-                    style={{ marginRight: "24px", paddingTop: "13px" }}
-                  >
-                    <FontAwesomeIcon
-                      icon="download"
-                      size="1x"
-                      color="#0099e5"
-                    />
-                  </CSVLink>
-                </Tooltip>
+                  <FontAwesomeIcon icon="download" size="1x" color="#0099e5" />
+                </CSVLink>
               ) : null}
 
               {this.state.shouldCurrentMonthDataCompOpen &&
@@ -481,138 +303,77 @@ class TableToolbarEmployee extends Component {
                 />
               ) : null}
 
-              <Tooltip
-                title={
-                  <React.Fragment>
-                    {this.state.dateRangeTooltip === "" ? (
-                      <h2>Find all Employees between two dates </h2>
-                    ) : null}
-                    <span className={classes.arrow} ref={this.handleArrowRef} />
-                  </React.Fragment>
-                }
-                placement="top-end"
-                classes={{
-                  tooltip: classes.bootstrapTooltip,
-                  popper: classes.arrowPopper,
-                  tooltipPlacementLeft: classes.bootstrapPlacementLeft,
-                  tooltipPlacementRight: classes.bootstrapPlacementRight,
-                  tooltipPlacementTop: classes.bootstrapPlacementTop,
-                  tooltipPlacementBottom: classes.bootstrapPlacementBottom
-                }}
-                PopperProps={{
-                  popperOptions: {
-                    modifiers: {
-                      arrow: {
-                        enabled: Boolean(this.state.arrowRef),
-                        element: this.state.arrowRef
-                      }
-                    }
-                  }
-                }}
+              <IconButton
+                aria-label="Filter list"
+                onClick={this.openDateRangeFilterCompOnClick}
+                style={{ marginRight: "15px" }}
               >
-                <IconButton
-                  aria-label="Filter list"
-                  onClick={this.openDateRangeFilterCompOnClick}
-                  style={{ marginRight: "15px" }}
-                >
-                  {this.state.shouldDateRangeFilterCompOpen ? (
-                    <DateRangeFilter
-                      closeDateRangeFilterCompOnClick={
-                        this.closeDateRangeFilterCompOnClick
-                      }
-                      totalItemsFormatted={this.props.totalItemsFormatted}
-                      ifUserWantsDateRangeData={
-                        this.props.ifUserWantsDateRangeData
-                      }
-                      page={this.props.page}
-                      rowsPerPage={this.props.rowsPerPage}
-                      handleStartDateChangeParent={
-                        this.props.handleStartDateChangeParent
-                      }
-                      handleEndDateChangeParent={
-                        this.props.handleEndDateChangeParent
-                      }
-                      ifUserSearchedDateRange={
-                        this.props.ifUserSearchedDateRange
-                      }
-                      start_date={this.props.start_date}
-                      end_date={this.props.end_date}
-                      setDateRangeTooltip={this.setDateRangeTooltip}
-                      clearDateRangeTooltip={this.clearDateRangeTooltip}
-                    />
-                  ) : this.state.shouldSearchFilterCompOpen ||
-                    this.state.shouldCurrentMonthDataCompOpen ||
-                    this.state.shouldCurrentDateDataCompOpen ? null : (
-                    <FontAwesomeIcon
-                      icon="calendar-alt"
-                      color="#0099e5"
-                      size="1x"
-                    />
-                  )}
-                </IconButton>
-              </Tooltip>
-              <Tooltip
-                title={
-                  <React.Fragment>
-                    {this.state.textFilterCancelTooltip === "" ? (
-                      <h2>Filter/Search Table</h2>
-                    ) : null}
-                    <span className={classes.arrow} ref={this.handleArrowRef} />
-                  </React.Fragment>
-                }
-                placement="top-end"
-                classes={{
-                  tooltip: classes.bootstrapTooltip,
-                  popper: classes.bootstrapPopper,
-                  tooltipPlacementLeft: classes.bootstrapPlacementLeft,
-                  tooltipPlacementRight: classes.bootstrapPlacementRight,
-                  tooltipPlacementTop: classes.bootstrapPlacementTop,
-                  tooltipPlacementBottom: classes.bootstrapPlacementBottom
-                }}
-                PopperProps={{
-                  popperOptions: {
-                    modifiers: {
-                      arrow: {
-                        enabled: Boolean(this.state.arrowRef),
-                        element: this.state.arrowRef
-                      }
+                {this.state.shouldDateRangeFilterCompOpen ? (
+                  <DateRangeFilter
+                    closeDateRangeFilterCompOnClick={
+                      this.closeDateRangeFilterCompOnClick
                     }
-                  }
-                }}
+                    totalItemsFormatted={this.props.totalItemsFormatted}
+                    ifUserWantsDateRangeData={
+                      this.props.ifUserWantsDateRangeData
+                    }
+                    page={this.props.page}
+                    rowsPerPage={this.props.rowsPerPage}
+                    handleStartDateChangeParent={
+                      this.props.handleStartDateChangeParent
+                    }
+                    handleEndDateChangeParent={
+                      this.props.handleEndDateChangeParent
+                    }
+                    ifUserSearchedDateRange={this.props.ifUserSearchedDateRange}
+                    start_date={this.props.start_date}
+                    end_date={this.props.end_date}
+                    setDateRangeTooltip={this.setDateRangeTooltip}
+                    clearDateRangeTooltip={this.clearDateRangeTooltip}
+                  />
+                ) : this.state.shouldSearchFilterCompOpen ||
+                  this.state.shouldCurrentMonthDataCompOpen ||
+                  this.state.shouldCurrentDateDataCompOpen ? null : (
+                  <FontAwesomeIcon
+                    icon="calendar-alt"
+                    color="#0099e5"
+                    size="1x"
+                  />
+                )}
+              </IconButton>
+
+              <IconButton
+                aria-label="Filter list"
+                onClick={this.openSearchFilterCompOnClick}
               >
-                <IconButton
-                  aria-label="Filter list"
-                  onClick={this.openSearchFilterCompOnClick}
-                >
-                  {this.state.shouldSearchFilterCompOpen ? (
-                    <SearchFilter
-                      closeSearchFilterCompOnClick={
-                        this.closeSearchFilterCompOnClick
-                      }
-                      totalItemsFormatted={this.props.totalItemsFormatted}
-                      handleColumnToQuery={this.props.handleColumnToQuery}
-                      value={searchSelection}
-                      onChange={e => this.handleSearchSelection(e)}
-                      inputValue={searchValue}
-                      onInputChange={(e, action) =>
-                        this.handleSearchInput(e, action)
-                      }
-                      style={{ marginRight: "100px" }}
-                      setTextFilterTooltip={this.setTextFilterTooltip}
-                      clearTextFilterTooltip={this.clearTextFilterTooltip}
-                    />
-                  ) : this.state.shouldDateRangeFilterCompOpen ||
-                    this.state.shouldCurrentMonthDataCompOpen ||
-                    this.state.shouldCurrentDateDataCompOpen ? null : (
-                    <FontAwesomeIcon icon="filter" color="#0099e5" size="1x" />
-                  )}
-                </IconButton>
-              </Tooltip>
+                {this.state.shouldSearchFilterCompOpen ? (
+                  <SearchFilter
+                    closeSearchFilterCompOnClick={
+                      this.closeSearchFilterCompOnClick
+                    }
+                    totalItemsFormatted={this.props.totalItemsFormatted}
+                    handleColumnToQuery={this.props.handleColumnToQuery}
+                    value={searchSelection}
+                    onChange={e => this.handleSearchSelection(e)}
+                    inputValue={searchValue}
+                    onInputChange={(e, action) =>
+                      this.handleSearchInput(e, action)
+                    }
+                    style={{ marginRight: "100px" }}
+                    setTextFilterTooltip={this.setTextFilterTooltip}
+                    clearTextFilterTooltip={this.clearTextFilterTooltip}
+                  />
+                ) : this.state.shouldDateRangeFilterCompOpen ||
+                  this.state.shouldCurrentMonthDataCompOpen ||
+                  this.state.shouldCurrentDateDataCompOpen ? null : (
+                  <FontAwesomeIcon icon="filter" color="#0099e5" size="1x" />
+                )}
+              </IconButton>
             </div>
           )}
         </div>
       </Toolbar>
-    );
+    )
   }
 }
 
@@ -648,6 +409,6 @@ TableToolbarEmployee.propTypes = {
   ifUserClickedForCurrentMonth: PropTypes.bool.isRequired,
   clearCurrentMonthSearch: PropTypes.func.isRequired,
   allDepartmentsForSiblingCommunication: PropTypes.array.isRequired
-};
+}
 
-export default withStyles(toolbarStyles)(TableToolbarEmployee);
+export default withStyles(toolbarStyles)(TableToolbarEmployee)

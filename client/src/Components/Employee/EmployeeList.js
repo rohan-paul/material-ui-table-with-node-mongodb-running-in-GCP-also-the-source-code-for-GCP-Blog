@@ -459,14 +459,14 @@ class EmployeeList extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (
       this.state.itemsDateRangePaginated.length !==
-        prevState.itemsDateRangePaginated.length ||
+      prevState.itemsDateRangePaginated.length ||
       this.state.totalDateRangeSearchResultParent.length !==
-        prevState.totalDateRangeSearchResultParent.length ||
+      prevState.totalDateRangeSearchResultParent.length ||
       this.state.totalItemsFormatted.length !==
-        prevState.totalItemsFormatted.length ||
+      prevState.totalItemsFormatted.length ||
       this.state.rowsPerPage !== prevState.rowsPerPage ||
       this.state.currentDateTotal.length !==
-        prevState.currentDateTotal.length ||
+      prevState.currentDateTotal.length ||
       this.state.selected !== prevState.selected
     ) {
       if (this.state.ifUserSearchedDateRange) {
@@ -790,31 +790,31 @@ class EmployeeList extends Component {
       typeof queryStringFromChild == "string"
         ? queryStringFromChild && queryStringFromChild.toLowerCase()
         : typeof queryStringFromChild == "number"
-        ? queryStringFromChild
-        : null;
+          ? queryStringFromChild
+          : null;
 
     const totalTextQueryResult =
       lowerCaseQuery !== ""
         ? totalItemsFormatted.filter(
-            item =>
-              item[this.state.columnToQuery] &&
-              item[this.state.columnToQuery]
-                .toLowerCase()
-                .includes(lowerCaseQuery)
-          )
+          item =>
+            item[this.state.columnToQuery] &&
+            item[this.state.columnToQuery]
+              .toLowerCase()
+              .includes(lowerCaseQuery)
+        )
         : null;
 
     // Conditionally set the list of items that will be actually be of interest for rendering. e.g. If 'itemsDateRangePaginated' OR 'queryStringFromChild' OR 'ifUserClickedForCurrentMonth' is not set by user then render currentDatePaginated list of items. Else only render the items that the user wants.
     const itemsToRenderInThisPage = !ifUserClickedForCurrentMonth
       ? !ifUserSearchedDateRange
         ? orderByLodash(
-            queryStringFromChild
-              ? totalTextQueryResult.slice(
-                  page * rowsPerPage,
-                  page * rowsPerPage + rowsPerPage
-                )
-              : currentDatePaginated
-          )
+          queryStringFromChild
+            ? totalTextQueryResult.slice(
+              page * rowsPerPage,
+              page * rowsPerPage + rowsPerPage
+            )
+            : currentDatePaginated
+        )
         : itemsDateRangePaginated
       : currentMonthPaginated;
 
@@ -888,10 +888,10 @@ class EmployeeList extends Component {
                         queryStringFromChild
                           ? totalTextQueryResult.length
                           : ifUserSearchedDateRange
-                          ? totalDateRangeSearchResultParent.length
-                          : ifUserClickedForCurrentMonth
-                          ? currentMonthTotal.length
-                          : currentDateTotal.length
+                            ? totalDateRangeSearchResultParent.length
+                            : ifUserClickedForCurrentMonth
+                              ? currentMonthTotal.length
+                              : currentDateTotal.length
                       }
                       rowsPerPage={parseInt(rowsPerPage)}
                       noOfItemsInCurrentPage={itemsToRenderInThisPage.length}
@@ -998,10 +998,10 @@ class EmployeeList extends Component {
                             queryStringFromChild
                               ? totalTextQueryResult.length
                               : ifUserSearchedDateRange
-                              ? totalDateRangeSearchResultParent.length
-                              : ifUserClickedForCurrentMonth
-                              ? currentMonthTotal.length
-                              : currentDateTotal.length
+                                ? totalDateRangeSearchResultParent.length
+                                : ifUserClickedForCurrentMonth
+                                  ? currentMonthTotal.length
+                                  : currentDateTotal.length
                           }
                           rowsPerPage={parseInt(rowsPerPage)}
                           page={page}
@@ -1067,6 +1067,8 @@ class EmployeeList extends Component {
               </IconButton>
             </Tooltip>
           </div>
+
+
         </div>
       </MuiThemeProvider>
     );
