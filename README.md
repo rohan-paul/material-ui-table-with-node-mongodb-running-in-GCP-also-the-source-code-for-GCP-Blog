@@ -29,8 +29,13 @@ cd ..
 
 // And check that everything is running properly
 
+```
 npm start
+```
 
+And then finally deploy to Google Cloud
+
+```
 gcloud app deploy --stop-previous-version
 
 ```
