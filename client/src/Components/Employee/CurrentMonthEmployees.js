@@ -42,8 +42,7 @@ class CurrentMonthEmployee extends Component {
           title={
             <React.Fragment>
               <h2>
-                Clear filter for only {currentMonth} and show all Berth
-                Throughput
+                Clear filter for only {currentMonth} and show all Employees
               </h2>
               <span className={classes.arrow} ref={this.handleArrowRef} />
             </React.Fragment>

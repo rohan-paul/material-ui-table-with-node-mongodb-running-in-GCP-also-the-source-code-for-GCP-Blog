@@ -317,7 +317,7 @@ class EditEmployee extends Component {
                   }
                   helperText={
                     avg_employee_productivity === ""
-                      ? "Please enter Berth Hire"
+                      ? "Please enter Employee Productivity"
                       : " "
                   }
                   label="Avg. Employee Productivity"

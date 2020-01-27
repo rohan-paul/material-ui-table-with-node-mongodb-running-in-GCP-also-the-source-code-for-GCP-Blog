@@ -179,7 +179,10 @@ class TableToolbarEmployee extends Component {
             </Typography>
           ) : (
             <Typography variant="h6" id="tableTitle">
-              Employees
+              Showing only Employees who joined today
+              <Typography >
+              <h5>Click next button to see all of this month  </h5>
+            </Typography>
             </Typography>
           )}
         </div>
