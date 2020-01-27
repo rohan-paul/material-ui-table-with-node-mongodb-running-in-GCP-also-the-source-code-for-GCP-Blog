@@ -18,7 +18,7 @@ Then, start mongodb service with `sudo service mongod start` and then finally ru
 
 This will start both the client (port 3000) and server (port 8080) and launch the site in port 3000.
 
-### To build the project for production and serve the React static files from `/client/build` (i.e. do these steps before deploying to Google Cloud Platform's Google App Engine)
+#### To build the project for production and serve the React static files from `/client/build` (i.e. do these steps before deploying to Google Cloud Platform's Google App Engine)
 
 ```
 cd client
@@ -27,10 +27,13 @@ npm run build
 
 cd ..
 
-// And check that everything is running properly
+```
+
+And check that everything is running properly
 
 ```
 npm start
+
 ```
 
 And then finally deploy to Google Cloud
