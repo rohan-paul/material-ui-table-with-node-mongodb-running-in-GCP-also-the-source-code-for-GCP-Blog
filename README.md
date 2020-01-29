@@ -48,3 +48,9 @@ gcloud app deploy --stop-previous-version
 #### `npm test`
 
 Launches the test runner in the interactive watch mode.<br>
+
+#### To check the bundle size of overall app and various packages of the Client
+
+``cd client`` and then run
+
+``npm run analyze``

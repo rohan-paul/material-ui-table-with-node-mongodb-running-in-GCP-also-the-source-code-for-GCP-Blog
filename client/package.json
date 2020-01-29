@@ -60,6 +60,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
+    "analyze": "node ./analyze.js",
     "count": "cloc src/"
   },
   "browserslist": [
@@ -69,9 +70,11 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "enzyme": "^3.9.0",
     "cloc": "^2.5.1",
+    "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.9.1",
-    "react-test-renderer": "^16.8.3"
+    "progress-bar-webpack-plugin": "^2.1.0",
+    "react-test-renderer": "^16.8.3",
+    "webpack-bundle-analyzer": "^3.6.0"
   }
 }
