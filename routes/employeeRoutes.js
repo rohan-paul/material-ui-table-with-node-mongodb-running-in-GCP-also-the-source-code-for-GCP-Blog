@@ -331,14 +331,16 @@ router.post("/paginate/currentmonth", (req, res, next) => {
 
 module.exports = router;
 
-/* 1> To test the POST (New Item) route http://localhost:3000/api/employee in Postman - ie. adding a new item, in below Postman request, I have to take an existing object_id from the department module - If I dont yet have a department module take an arbitrary _id for filling up the objectId field for the 'department_objectId' prop of the scheme.
+/* 1> To test the POST (New Item) route http://localhost:3000/api/employee in Postman - ie. for adding a new Employee, I have to take an existing object_id from the department module, meaning a real Department data should be existing already, i.e. Department should be created before creating Employee
+
+And If I dont yet have a department module take an arbitrary _id for filling up the objectId field for the 'department_objectId' prop of the Employee scheme.
 
 The below one is with a real object_id
 
 {
     "department_objectId":"5c6c0f969c84ea3c7194a7de",
     "avg_employee_productivity":"6",
-	"benchmark_employee_productivity":"20",
+	  "benchmark_employee_productivity":"20",
     "date":"2019-02-26"
 }
 
