@@ -20,7 +20,7 @@
   "license": "ISC",
   "dependencies": {
     "adm-zip": "^0.4.13",
-    "async": "^2.6.1",
+    "async": "^3.2.2",
     "body-parser": "^1.18.3",
     "buffer-to-stream": "^1.0.0",
     "client-sessions": "^0.8.0",
